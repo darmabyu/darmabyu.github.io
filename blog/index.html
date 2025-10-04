@@ -91,9 +91,28 @@
 				</div>
 			</div>
 				<div class="col-md-8">
-					<h2>List Postingan</h2>
-					<p>-</p>
-				</div>
+  <h2>List Postingan</h2>
+  <div class="posts-grid">
+    {% for post in site.blog %}
+      <article class="post-card">
+        <a href="{{ post.url }}">
+          <div class="post-thumb">
+            <img src="{{ post.header_image | default: '/images/default-thumbnail.png' }}" alt="{{ post.title }}">
+          </div>
+          <div class="post-info">
+            <h3>{{ post.title }}</h3>
+            <p class="post-date">{{ post.date | date: "%d %B %Y" }}</p>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+
+    {% if site.blog == empty %}
+      <p>Belum ada postingan.</p>
+    {% endif %}
+  </div>
+</div>
 			</div>
 		</div>
 	</div>	
@@ -141,6 +160,7 @@
 </script>
 	</body>
 </html>
+
 
 
 
