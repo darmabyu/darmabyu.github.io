@@ -7,6 +7,3 @@ collections:
   blog:
     output: true
     permalink: /blog/:path/
-
-plugins:
-  - jekyll-sitemap
