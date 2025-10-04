@@ -1,0 +1,12 @@
+title: "Blog Darma Byu"
+description: "SEO - Blogger - Gamer"
+url: "https://darmabyu.github.io"
+baseurl: ""
+
+collections:
+  blog:
+    output: true
+    permalink: /blog/:path/
+
+plugins:
+  - jekyll-sitemap

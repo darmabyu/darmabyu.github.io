@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="max-image-preview:large">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ page.title | escape }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.title }}"
+    },
+    "image": "{{ page.header_image | default: '/images/default-thumbnail.png' }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="post-hero" style="background-image: url('{{ page.header_image | default: '/images/default-thumbnail.png' }}');">
+    <div class="overlay"></div>
+    <div class="hero-inner">
+      <h1>{{ page.title }}</h1>
+      <p class="post-meta">{{ page.date | date: "%d %B %Y" }}</p>
+    </div>
+    <nav class="post-nav">
+      <a href="/blog/" class="back-link">← Kembali ke Blog</a>
+    </nav>
+  </header>
+
+  <main class="post-container">
+    <article class="post-content">
+      {{ content }}
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }} · Built with Jekyll</p>
+  </footer>
+
+<script src="/js/menu.js"></script>
+</body>
+</html>
