@@ -3,7 +3,5 @@ description: "SEO - Blogger - Gamer"
 url: "https://darmabyu.github.io"
 baseurl: ""
 
-collections:
-  blog:
-    output: true
-    permalink: /blog/:path/
+# Atur permalink untuk postingan agar tampil di /blog/:title/
+permalink: /blog/:title/
