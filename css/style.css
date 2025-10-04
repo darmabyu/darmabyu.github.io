@@ -1290,80 +1290,80 @@ input[type="text"] {
   opacity: 0;
 }
 
-/* Container untuk hamburger dan menu */
+/* 🔸 Menu Hamburger Styling */
 .menu-container {
   position: absolute;
   top: 20px;
   right: 25px;
-  z-index: 1000;
+  z-index: 9999; /* pastikan di atas overlay */
 }
 
-/* Tombol hamburger */
 .menu-toggle {
-  font-size: 30px;
+  font-size: 28px;
   color: white;
+  background-color: rgba(255, 165, 0, 0.95);
+  padding: 8px 14px;
+  border-radius: 6px;
   cursor: pointer;
-  display: block;
+  transition: background 0.3s ease;
 }
 
-/* Daftar menu */
+.menu-toggle:hover {
+  background-color: rgba(255, 140, 0, 1);
+}
+
+/* 🔸 Daftar menu tersembunyi */
 .nav-links {
   display: none;
-  list-style: none;
-  background: rgba(255, 102, 0, 0.9); /* oranye semi transparan */
   position: absolute;
-  top: 45px;
   right: 0;
-  padding: 10px 0;
+  top: 50px;
+  list-style: none;
+  background: rgba(255, 165, 0, 0.95);
+  margin: 0;
+  padding: 0;
   border-radius: 8px;
-  width: 150px;
-  text-align: right;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* 🔸 Aktif saat hamburger diklik */
+.nav-links.active {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+/* 🔸 Gaya item menu */
 .nav-links li {
-  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.nav-links li:last-child {
+  border-bottom: none;
 }
 
 .nav-links a {
   display: block;
   color: white;
-  padding: 10px 20px;
   text-decoration: none;
+  padding: 12px 20px;
+  transition: background 0.3s ease;
 }
 
 .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.15);
 }
 
-/* Saat menu aktif (terbuka) */
-.nav-links.active {
-  display: block;
+/* 🔸 Animasi muncul */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+header .overlay {
+  z-index: 1;
 }
 
-/* Responsif */
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-  .nav-links {
-  display: none;
-  list-style: none;
-  background: rgba(255, 102, 0, 0.95); /* oranye transparan */
-  position: absolute;
-  top: 45px;
-  right: 0;
-  padding: 10px 0;
-  border-radius: 8px;
-  width: 160px;
-  text-align: left;
-  box-sizing: border-box;
-  overflow: hidden;
-  z-index: 999;
-}
-}
 .menu-container {
-  position: relative; /* ⬅️ supaya child absolute mengacu ke sini */
+  z-index: 9999 !important;
 }
-
-
 /*# sourceMappingURL=style.css.map */
