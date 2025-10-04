@@ -1290,53 +1290,67 @@ input[type="text"] {
   opacity: 0;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: #111;
-  color: #fff;
+/* Container untuk hamburger dan menu */
+.menu-container {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 1000;
 }
 
+/* Tombol hamburger */
+.menu-toggle {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: block;
+}
+
+/* Daftar menu */
 .nav-links {
+  display: none;
   list-style: none;
-  display: flex;
-  gap: 20px;
+  background: rgba(255, 102, 0, 0.9); /* oranye semi transparan */
+  position: absolute;
+  top: 45px;
+  right: 0;
+  padding: 10px 0;
+  border-radius: 8px;
+  width: 150px;
+  text-align: right;
+}
+
+.nav-links li {
+  margin: 0;
 }
 
 .nav-links a {
+  display: block;
   color: white;
+  padding: 10px 20px;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* --- Responsif untuk Mobile --- */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #222;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    border-radius: 8px;
-    padding: 10px;
-  }
+/* Saat menu aktif (terbuka) */
+.nav-links.active {
+  display: block;
+}
 
-  .nav-links.active {
-    display: flex;
-  }
-
+/* Responsif */
+@media (min-width: 769px) {
   .menu-toggle {
-    display: block;
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    background: none;
+    position: static;
+    flex-direction: row;
+    gap: 20px;
   }
 }
 
