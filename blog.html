@@ -16,7 +16,7 @@ permalink: /blog/
       <div class="posts-grid">
         {% for post in site.blog %}
           <article class="post-card">
-            <a href="{{ post.url }}">
+            <a href="{{ post.url }}">{{ post.title }}</a>
               <div class="post-thumb">
                 <img src="{{ post.header_image | default: '/images/default-thumbnail.png' }}" alt="{{ post.title }}">
               </div>
