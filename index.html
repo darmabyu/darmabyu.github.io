@@ -45,6 +45,22 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+		  <nav class="navbar">
+    <div class="logo">Darma Byu</div>
+    
+    <!-- Tombol Hamburger -->
+    <div class="menu-toggle" id="menu-toggle">
+      &#9776; <!-- simbol ☰ -->
+    </div>
+
+    <!-- Daftar Menu -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
 	</head>
 	<body>
 		
@@ -255,7 +271,14 @@
 	
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
 
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 	</body>
 </html>
 
