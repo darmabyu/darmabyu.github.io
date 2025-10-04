@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Tutorial Menulis Artikel di Blog GitHub Pages"
 date: 2025-10-07
 header_image: "/images/default-thumbnail.png"
