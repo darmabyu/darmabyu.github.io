@@ -1,59 +1,122 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE HTML>
+<html lang="id-ID">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ page.title }} - Darma Byu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <meta name="description" content="{{ page.description | default: 'Deretan Postingan Blog Karya Darma Byu.' }}">
+  <meta name="keywords" content="darmabyu, blog, seo, gamer">
+  <meta name="author" content="darmabyu">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | escape }}"/>
+  <meta property="og:image" content="{{ page.og_image | default: '/images/myprofile.webp' | absolute_url }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
+  <meta property="og:site_name" content="BLOG BY DARMA BYU"/>
+  <meta property="og:description" content="{{ page.description | default: 'Deretan Postingan Blog Karya Darma Byu.' }}"/>
+  <meta name="twitter:title" content="{{ page.title | escape }}" />
+  <meta name="twitter:image" content="{{ page.og_image | default: '/images/myprofile.webp' | absolute_url }}" />
+  <meta name="twitter:url" content="{{ page.url | absolute_url }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="/css/animate.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="/css/icomoon.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <!-- Theme style  -->
   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Modernizr JS -->
+  <script src="/js/modernizr-2.6.2.min.js"></script>
+  <!--[if lt IE 9]>
+  <script src="/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <header class="site-header">
-    <div class="menu-wrap">
-      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <nav id="nav" class="nav">
-        <a href="/">Home</a>
-        <a href="/#fh5co-about">About</a>
-        <a href="/#fh5co-started">Contact</a>
-        <a href="/blog/">Blog</a>
-      </nav>
-    </div>
-    <div class="site-brand">
-      <a href="/"><h1>{{ site.title }}</h1><p class="site-desc">{{ site.description }}</p></a>
-    </div>
-  </header>
+  
+<div class="fh5co-loader"></div>
 
-  <main>
-    {{ content }}
-  </main>
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url('{{ page.header_image | default: '/images/myprofile.webp' | absolute_url }}');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
 
-  <footer class="site-footer">
-    <p>© {{ site.time | date: "%Y" }} {{ site.title }} · Built with Jekyll</p>
-  </footer>
+  <!-- ✅ Menu Hamburger -->
+  <div class="menu-container">
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#fh5co-about">About</a></li>
+      <li><a href="/#fh5co-started">Contact</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <div class="display-t js-fullheight">
+          <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+            <div class="profile-thumb" style="background: url('{{ '/images/myprofile.webp' | absolute_url }}');"></div>
+            <h1><span>{{ page.title | default: site.title }}</span></h1>
+            <h3><span>SEO - Blogger - Gamer</span></h3>
+            <ul class="fh5co-social-icons">
+              <li><a href="https://github.com/darmabyu" target="_blank"><i class="fab fa-github fa-2x"></i></a></li>
+              <li><a href="https://www.tiktok.com/@drmbyu" target="_blank"><i class="fab fa-tiktok fa-2x"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fab fa-instagram fa-2x"></i></a></li>
+              <li><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ Konten halaman dimasukkan di sini -->
+<main>
+  {{ content }}
+</main>
+
+<footer id="fh5co-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p><a href="/" target="_blank">DarmaByu</a> Profile</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="/js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="/js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="/js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="/js/google_map.js"></script>
-	
-	<!-- Main -->
-	<script src="/js/main.js"></script>
+  <a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/jquery.easypiechart.min.js"></script>
+<script src="/js/google_map.js"></script>
+<script src="/js/main.js"></script>
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>
