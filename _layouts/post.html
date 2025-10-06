@@ -31,28 +31,54 @@ layout: default
 }
 </script>
 
-<article class="blog-post container animate-box" style="margin-top: 4rem; margin-bottom: 4rem;">
-  <header class="post-header text-center">
+<!-- ✅ Link CSS khusus halaman post -->
+<link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+
+<article class="blog-post container animate-box">
+  
+  <!-- 🧭 Breadcrumb -->
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="{{ '/' | relative_url }}">Beranda</a> › 
+    <a href="{{ '/blog/' | relative_url }}">Blog</a> › 
+    <span>{{ page.title }}</span>
+  </nav>
+
+  <!-- 📝 Header -->
+  <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-date text-muted">{{ page.date | date: "%d %B %Y" }}</p>
+    <p class="post-date">{{ page.date | date: "%d %B %Y" }}</p>
 
     {% if page.header_image %}
-    <div class="post-hero-img" style="margin-top: 2rem; margin-bottom: 2rem;">
-      <img 
-        src="{{ page.header_image }}" 
-        alt="{{ page.title }}" 
-        class="img-responsive" 
-        style="max-height: 400px; object-fit: cover; width: 100%; border-radius: 12px;"
-      >
+    <div class="post-hero-img">
+      <img src="{{ page.header_image }}" alt="{{ page.title }}" class="img-responsive">
     </div>
     {% endif %}
   </header>
 
-  <div class="post-body" style="line-height: 1.8; font-size: 1.05rem;">
+  <!-- 📝 Konten -->
+  <div class="post-body">
     {{ content }}
   </div>
 
-  <nav class="post-nav text-center" style="margin-top: 3rem;">
-    <a href="/blog/" class="btn btn-primary" style="padding: 10px 20px; text-decoration: none;">← Kembali ke Blog</a>
+  <!-- 📰 Related Posts -->
+  {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" | where_exp: "post", "post.tags | intersect: page.tags | size > 0" %}
+  {% if related_posts and related_posts.size > 0 %}
+  <div class="related-posts">
+    <h3>Artikel Terkait</h3>
+    <ul>
+      {% for post in related_posts limit: 3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span> — {{ post.date | date: "%d %B %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- 🔙 Navigasi kembali -->
+  <nav class="post-nav">
+    <a href="{{ '/blog/' | relative_url }}" class="btn">← Kembali ke Blog</a>
   </nav>
+
 </article>
