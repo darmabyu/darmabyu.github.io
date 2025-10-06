@@ -1,0 +1,111 @@
+/* 📄 post.css — Styling khusus untuk halaman artikel */
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+}
+.breadcrumb a {
+  color: #555;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb span {
+  color: #999;
+}
+
+/* Post Container */
+.blog-post {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  max-width: 850px;
+}
+
+/* Post Header */
+.post-header {
+  text-align: center;
+}
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.post-date {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #888;
+}
+
+/* Hero Image */
+.post-hero-img {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.post-hero-img img {
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Post Body */
+.post-body {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+.post-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Related Posts */
+.related-posts {
+  margin-top: 3rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+.related-posts h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.related-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.related-posts li {
+  margin-bottom: 0.75rem;
+}
+.related-posts a {
+  text-decoration: none;
+  color: #0073aa;
+  font-weight: 500;
+}
+.related-posts a:hover {
+  text-decoration: underline;
+  color: #005b8f;
+}
+.related-posts span {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+/* Navigation Button */
+.post-nav {
+  margin-top: 3rem;
+  text-align: center;
+}
+.post-nav .btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #0073aa;
+  color: #fff;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.post-nav .btn:hover {
+  background-color: #005b8f;
+}
