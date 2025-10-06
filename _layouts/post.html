@@ -61,11 +61,17 @@ layout: default
   </div>
 
  <!-- 📰 Related Posts Section -->
+{% if page.tags %}
+  {% assign related_posts = site.posts 
+    | where_exp: "post", "post.url != page.url" 
+    | where_exp: "post", "post.tags | intersect: page.tags | size > 0" %}
+{% endif %}
+  
 {% assign related_posts = site.posts 
   | where_exp: "post", "post.url != page.url" 
   | where_exp: "post", "post.tags | intersect: page.tags | size > 0" %}
 
-{% if related_posts and related_posts.size > 0 %}
+{% if page.tags and related_posts and related_posts.size > 0 %}
 <div class="related-posts">
   <h3>Artikel Terkait</h3>
   <div class="related-grid">
