@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3.3"
-gem "webrick"   # perlu untuk build lokal / environment GitHub
+gem "github-pages", group: :jekyll_plugins
+gem "webrick"
