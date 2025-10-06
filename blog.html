@@ -2,7 +2,6 @@
 layout: default
 title: Blog Darma Byu
 permalink: /blog/
-paginate: 6
 ---
 
 <div id="fh5co-about" class="animate-box">
@@ -15,38 +14,25 @@ paginate: 6
     <div class="col-md-12">
       <h2>List Postingan</h2>
       <div class="row posts-grid">
-        {% for post in site.posts %}
-          <div class="col-md-6">
-            <article class="post-card">
-              <a href="{{ post.url }}">
-                <div class="post-thumb">
-                  <img src="{{ post.header_image | default: '/images/default-thumbnail.png' }}" alt="{{ post.title }}">
-                </div>
-                <div class="post-info">
-                  <h3>{{ post.title }}</h3>
-                  <p class="post-date">{{ post.date | date: "%d %B %Y" }}</p>
-                  <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-                </div>
-              </a>
-            </article>
-          </div>
-        {% endfor %}
-
-        {% if paginator.posts == empty %}
+        {% if site.posts and site.posts.size > 0 %}
+          {% for post in site.posts %}
+            <div class="col-md-6">
+              <article class="post-card">
+                <a href="{{ post.url | relative_url }}">
+                  <div class="post-thumb">
+                    <img src="{{ post.header_image | default: '/images/default-thumbnail.png' }}" alt="{{ post.title }}">
+                  </div>
+                  <div class="post-info">
+                    <h3>{{ post.title }}</h3>
+                    <p class="post-date">{{ post.date | date: "%d %B %Y" }}</p>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+                  </div>
+                </a>
+              </article>
+            </div>
+          {% endfor %}
+        {% else %}
           <p>Belum ada postingan.</p>
-        {% endif %}
-      </div>
-
-      <!-- ✅ Pagination Navigation -->
-      <div class="pagination text-center" style="margin-top: 2rem;">
-        {% if paginator.previous_page %}
-          <a class="btn btn-primary" href="{{ paginator.previous_page_path }}">← Halaman Sebelumnya</a>
-        {% endif %}
-
-        <span class="page-number">Halaman {{ paginator.page }} dari {{ paginator.total_pages }}</span>
-
-        {% if paginator.next_page %}
-          <a class="btn btn-primary" href="{{ paginator.next_page_path }}">Halaman Selanjutnya →</a>
         {% endif %}
       </div>
     </div>
