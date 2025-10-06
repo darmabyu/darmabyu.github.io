@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "tes1"
-date: 2025-10-06
+date: 2025-10-06 +0700
 header_image: "/images/default-thumbnail.png"
 excerpt: "Contoh artikel untuk menunjukkan bagaimana menulis artikel yang SEO-friendly dan responsive di GitHub Pages menggunakan Jekyll."
 ---
