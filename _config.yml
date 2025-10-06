@@ -3,15 +3,11 @@ description: "SEO - Blogger - Gamer"
 url: "https://darmabyu.github.io"
 baseurl: ""
 
-# Tambahkan ini 👇
 theme: null
 markdown: kramdown
+
 collections:
   posts:
     output: true
 
-# (opsional) kalau nanti mau pagination
-# plugins:
-#   - jekyll-paginate
-# paginate: 6
-# paginate_path: "/blog/page:num/"
+permalink: /blog/:title/
