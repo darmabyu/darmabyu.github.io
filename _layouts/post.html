@@ -2,19 +2,19 @@
 layout: default
 ---
 
-<!-- ✅ Structured Data for SEO -->
+<!-- ✅ JSON-LD Structured Data (valid Google schema.org Article) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "{{ page.title | escape }}",
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "alternativeHeadline": "{{ page.subtitle | default: page.title | escape }}",
+  "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}",
+  "image": "{{ page.header_image | default: '/images/default-thumbnail.png' | absolute_url }}",
   "author": {
     "@type": "Person",
-    "name": "{{ site.title }}"
+    "name": "{{ site.author.name | default: site.title }}"
   },
-  "image": "{{ page.header_image | default: '/images/default-thumbnail.png' | absolute_url }}",
   "publisher": {
     "@type": "Organization",
     "name": "{{ site.title }}",
@@ -27,16 +27,45 @@ layout: default
     "@type": "WebPage",
     "@id": "{{ page.url | absolute_url }}"
   },
-  "description": "{{ page.excerpt | strip_html | truncate: 160 }}"
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}"
 }
 </script>
 
-<!-- ✅ Link CSS khusus halaman post -->
+<!-- ✅ BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Beranda",
+      "item": "{{ '/' | absolute_url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ '/blog/' | absolute_url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ page.title | escape }}",
+      "item": "{{ page.url | absolute_url }}"
+    }
+  ]
+}
+</script>
+
+<!-- ✅ CSS halaman post -->
 <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
 
 <article class="blog-post container animate-box">
   
-  <!-- 🧭 Breadcrumb -->
+  <!-- 🧭 Breadcrumb visual -->
   <nav class="breadcrumb" aria-label="breadcrumb">
     <a href="{{ '/' | relative_url }}">Beranda</a> › 
     <a href="{{ '/blog/' | relative_url }}">Blog</a> › 
@@ -55,14 +84,50 @@ layout: default
     {% endif %}
   </header>
 
-  <!-- 📝 Konten -->
+  <!-- 🧠 Konten -->
   <div class="post-body">
     {{ content }}
   </div>
 
- 
+  <!-- 📰 Related Posts (pakai kategori, bukan tag) -->
+  {% if page.categories %}
+    {% assign related_posts = site.posts 
+      | where_exp: "post", "post.url != page.url" 
+      | where_exp: "post", "post.categories | intersect: page.categories | size > 0" %}
+  {% endif %}
 
-  <!-- 🔙 Navigasi kembali -->
+  {% if related_posts and related_posts.size > 0 %}
+  <div class="related-posts">
+    <h3>Artikel Terkait</h3>
+    <div class="related-grid">
+      {% for post in related_posts limit: 3 %}
+      <div class="related-item">
+        <a href="{{ post.url | relative_url }}">
+          <div class="related-thumb">
+            <img src="{{ post.header_image | default: '/images/default-thumbnail.png' }}" alt="{{ post.title }}">
+          </div>
+          <div class="related-info">
+            <h4 class="related-title">{{ post.title }}</h4>
+            <p class="related-date">{{ post.date | date: "%d %B %Y" }}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- 🔗 Navigasi antar post -->
+  <nav class="post-pagination">
+    {% if page.previous %}
+      <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+    {% endif %}
+    {% if page.next %}
+      <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+    {% endif %}
+  </nav>
+
+  <!-- 🔙 Tombol kembali -->
   <nav class="post-nav">
     <a href="{{ '/blog/' | relative_url }}" class="btn">← Kembali ke Blog</a>
   </nav>
