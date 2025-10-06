@@ -6,4 +6,5 @@ baseurl: ""
 theme: null
 markdown: kramdown
 
+future: true
 permalink: /blog/:title/
