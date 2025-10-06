@@ -6,8 +6,4 @@ baseurl: ""
 theme: null
 markdown: kramdown
 
-collections:
-  posts:
-    output: true
-
 permalink: /blog/:title/
