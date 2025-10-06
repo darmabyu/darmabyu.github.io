@@ -15,7 +15,7 @@ paginate: 6
     <div class="col-md-12">
       <h2>List Postingan</h2>
       <div class="row posts-grid">
-        {% for post in paginator.posts %}
+        {% for post in site.posts %}
           <div class="col-md-6">
             <article class="post-card">
               <a href="{{ post.url }}">
