@@ -2,13 +2,12 @@
 layout: default
 ---
 
-<!-- ✅ JSON-LD Structured Data (tanpa error Liquid) -->
+<!-- ✅ JSON-LD Structured Data (anti-error) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ page.title | jsonify }},
-  "alternativeHeadline": {{ page.subtitle | default: page.title | jsonify }},
   "description": {{ page.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }},
   "image": {{ page.header_image | default: '/images/default-thumbnail.png' | absolute_url | jsonify }},
   "author": {
@@ -32,7 +31,7 @@ layout: default
 }
 </script>
 
-<!-- ✅ BreadcrumbList JSON-LD -->
+<!-- ✅ Breadcrumb JSON-LD -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,7 +59,7 @@ layout: default
 }
 </script>
 
-<!-- ✅ CSS halaman post -->
+<!-- ✅ CSS khusus post -->
 <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
 
 <article class="blog-post container animate-box">
@@ -89,12 +88,11 @@ layout: default
     {{ content }}
   </div>
 
-  <!-- 📰 Related Posts pakai kategori -->
-  {% if page.categories %}
-    {% assign related_posts = site.posts 
-      | where_exp: "post", "post.url != page.url" 
-      | where_exp: "post", "post.categories | intersect: page.categories | size > 0" %}
-  {% endif %}
+  <!-- 📰 Related Posts (aman walau tanpa tag/kategori) -->
+  {% assign related_posts = site.posts 
+    | where_exp: "post", "post.url != page.url" 
+    | where_exp: "post", "page.categories and post.categories and post.categories | intersect: page.categories | size > 0" 
+  %}
 
   {% if related_posts and related_posts.size > 0 %}
   <div class="related-posts">
@@ -117,7 +115,7 @@ layout: default
   </div>
   {% endif %}
 
-  <!-- 🔗 Navigasi antar post -->
+  <!-- 🔗 Navigasi antar artikel -->
   <nav class="post-pagination">
     {% if page.previous %}
       <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
@@ -127,7 +125,7 @@ layout: default
     {% endif %}
   </nav>
 
-  <!-- 🔙 Tombol kembali -->
+  <!-- 🔙 Kembali ke Blog -->
   <nav class="post-nav">
     <a href="{{ '/blog/' | relative_url }}" class="btn">← Kembali ke Blog</a>
   </nav>
