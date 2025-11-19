@@ -1423,3 +1423,54 @@ html {
   color: #333;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* ===== PORTFOLIO NO-IMAGE STYLE ===== */
+
+#fh5co-portfolio {
+  padding: 5em 0;
+}
+
+.portfolio-card.no-image {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.portfolio-card.no-image:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  border-color: #1db3e7;
+}
+
+.portfolio-icon {
+  font-size: 45px;
+  color: #1db3e7;
+  margin-bottom: 20px;
+}
+
+.portfolio-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.portfolio-card a {
+  color: #1db3e7;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.portfolio-card a:hover {
+  text-decoration: underline;
+}
+
+.portfolio-card p {
+  color: #666;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
