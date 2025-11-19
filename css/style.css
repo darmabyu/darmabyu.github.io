@@ -1473,3 +1473,58 @@ html {
   color: #666;
   margin-top: 10px;
 }
+
+/* === Sticky Header After Scroll === */
+
+#fh5co-header {
+  transition: all .3s ease;
+  position: relative; /* default */
+  z-index: 5;
+}
+
+/* overlay harus tetap berada di belakang */
+#fh5co-header .overlay {
+  z-index: 1;
+}
+
+/* konten header harus berada di depan overlay */
+#fh5co-header .container,
+#fh5co-header .display-t,
+#fh5co-header .display-tc {
+  position: relative;
+  z-index: 3;
+}
+
+/* saat sticky */
+#fh5co-header.sticky-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto !important; /* supaya tidak memaksakan fullheight */
+  padding: 12px 0;
+  background: rgba(255,255,255,0.95) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  background-size: cover;
+}
+
+/* matikan overlay saat sticky */
+#fh5co-header.sticky-header .overlay {
+  opacity: 0;
+}
+
+/* profil + teks hilang saat sticky */
+#fh5co-header.sticky-header .display-t,
+#fh5co-header.sticky-header .display-tc,
+#fh5co-header.sticky-header .profile-thumb,
+#fh5co-header.sticky-header h1,
+#fh5co-header.sticky-header h3,
+#fh5co-header.sticky-header .fh5co-social-icons {
+  display: none;
+}
+
+/* hamburger tetap tampil */
+#fh5co-header.sticky-header .menu-container {
+  position: relative;
+  z-index: 9999;
+}
